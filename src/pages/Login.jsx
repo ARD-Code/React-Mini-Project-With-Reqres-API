@@ -1,8 +1,7 @@
 const Login = () => {
   return (
     <div>
-        <Navbar />
-      <h1>Login Page</h1>
+      <h1 style={{ marginTop: "100px" }}>Login Page</h1>
     </div>
   );
 };

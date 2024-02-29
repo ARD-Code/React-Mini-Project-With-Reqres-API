@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
         <div className="container">
           <Link className="navbar-brand" to={"/"}>
             Andy's User
@@ -23,7 +24,7 @@ const Navbar = () => {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
                 <Link className="nav-link" to={"/"}>
-                  Home <span className="sr-only">(current)</span>
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
