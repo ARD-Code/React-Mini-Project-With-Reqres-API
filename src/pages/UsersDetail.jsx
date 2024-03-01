@@ -10,7 +10,7 @@ const UsersDetail = () => {
     axios
       .get(`https://reqres.in/api/users/${id}`)
       .then((res) => {
-        console.log(res);
+        setUser(res?.data?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -21,9 +21,15 @@ const UsersDetail = () => {
     getUserDetail();
   }, []);
 
+  console.log("data", user);
+
   return (
     <div>
-      <h1>This is users detail</h1>
+      <h1>User Details</h1>
+      <img src={user.avatar} alt={user?.firstname} />
+      <h1>First Name : {user?.first_name} </h1>
+      <h1>Last Name : {user?.last_name}</h1>
+      <p>Email : {user?.email}</p>
     </div>
   );
 };

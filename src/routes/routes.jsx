@@ -2,6 +2,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Users from "../pages/Users";
+import UsersDetail from "../pages/UsersDetail";
 
 const routes = [
   {
@@ -19,6 +20,10 @@ const routes = [
   {
     path: "/users",
     element: <Users />,
+  },
+  {
+    path: "/userdetail/:id",
+    element: <UsersDetail />,
   },
 ];
 
