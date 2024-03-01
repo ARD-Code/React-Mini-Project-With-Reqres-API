@@ -3,13 +3,13 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 
 const Users = () => {
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
 
   const getUsersData = () => {
     axios
       .get("https://reqres.in/api/users?page=1")
       .then((res) => {
-        console.log(res);
+        setUsers(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -20,11 +20,17 @@ const Users = () => {
     getUsersData();
   }, []);
 
-  // console.log("data", users);
+  console.log("data", users);
   return (
     <div>
       <Navbar />
       <h1 style={{ marginTop: "100px" }}>User list Page</h1>
+      {users.map((item, index) => (
+        <div key={index}>
+          <h1>{`${item.first_name} ${item.last_name}`}</h1>
+          <img src={item.avatar} alt={item.first_name} />
+        </div>
+      ))}
     </div>
   );
 };
