@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -28,7 +29,9 @@ const Users = () => {
       {users.map((item, index) => (
         <div key={index}>
           <h1>{`${item.first_name} ${item.last_name}`}</h1>
-          <img src={item.avatar} alt={item.first_name} />
+          <Link to={`/userdetail/${item.id}`}>
+            <img src={item.avatar} alt={item.first_name} />
+          </Link>
         </div>
       ))}
     </div>
