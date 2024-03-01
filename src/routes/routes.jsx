@@ -3,11 +3,16 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Users from "../pages/Users";
 import UsersDetail from "../pages/UsersDetail";
+import ProtectedRoute from "./ProtectedRoute";
 
 const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/login",
@@ -19,11 +24,19 @@ const routes = [
   },
   {
     path: "/users",
-    element: <Users />,
+    element: (
+      <ProtectedRoute>
+        <Users />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/userdetail/:id",
-    element: <UsersDetail />,
+    element: (
+      <ProtectedRoute>
+        <UsersDetail />
+      </ProtectedRoute>
+    ),
   },
 ];
 
