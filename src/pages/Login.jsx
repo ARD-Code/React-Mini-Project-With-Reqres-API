@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [notif, setNotif] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -19,14 +23,25 @@ const Login = () => {
       email: email,
       password: password,
     };
+
+    setLoading(true);
+
     axios
       .post("https://reqres.in/api/login", payload)
       .then((res) => {
         setNotif("Login Berhasil");
         const token = res?.data?.token;
         localStorage.setItem("access_token", token);
+        setLoading(false);
+        if (token) {
+          setTimeout(() => {
+            navigate("/users");
+          }, 2000);
+        }
       })
       .catch((err) => {
+        setLoading(false);
+        console.log(err.response);
         setNotif(err?.response?.data?.error);
       });
   };
@@ -38,7 +53,9 @@ const Login = () => {
       <input type="email" placeholder="email" onChange={handleEmail} />
       <input type="password" placeholder="password" onChange={handlePassword} />
       <div>
-        <button onClick={handleLogin}>Login</button>
+        <button disabled={loading ? true : false} onClick={handleLogin}>
+          {loading ? "Loading..." : "Login"}
+        </button>
       </div>
     </div>
   );
