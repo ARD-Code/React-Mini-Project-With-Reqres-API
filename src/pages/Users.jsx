@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -68,6 +69,7 @@ const Users = () => {
           Next
         </button>
       </div>
+      <Footer />
     </div>
   );
 };

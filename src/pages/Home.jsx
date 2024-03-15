@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
     <div>
       <Navbar />
       <h1 style={{ marginTop: "100px" }}>This is Home page</h1>
+      <Footer />
     </div>
   );
 };
