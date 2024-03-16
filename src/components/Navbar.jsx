@@ -10,7 +10,7 @@ const Navbar = () => {
       />
 
       <nav
-        className="navbar navbar-expand-lg navbar-dark fixed-top"
+        className="navbar navbar-expand-lg navbar-dark fixed-top "
         style={{ backgroundColor: "#321f1c" }}
       >
         <div className="container">
