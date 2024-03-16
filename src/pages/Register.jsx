@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -46,6 +48,10 @@ const Register = () => {
       });
   };
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       <link
@@ -60,12 +66,20 @@ const Register = () => {
           borderRadius: "1rem",
         }}
       >
-        <div className="container py-5 h-100">
+        <div
+          className="container py-5 h-100"
+          data-aos="fade-right"
+          data-aos-duration="2000"
+        >
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
               <div className="card" style={{ borderRadius: "1rem" }}>
                 <div className="row g-0">
-                  <div className="col-md-6 col-lg-5 d-none d-md-block">
+                  <div
+                    className="col-md-6 col-lg-5 d-none d-md-block"
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                  >
                     <img
                       src="https://images.unsplash.com/photo-1527826507412-72e447368aa1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       alt="login form"
@@ -78,7 +92,11 @@ const Register = () => {
                     />
                   </div>
                   <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                    <div className="card-body p-4 p-lg-5 text-black">
+                    <div
+                      className="card-body p-4 p-lg-5 text-black"
+                      data-aos="fade-up"
+                      data-aos-duration="1000"
+                    >
                       <form>
                         <div className="d-flex align-items-center mb-3 pb-1">
                           <i
