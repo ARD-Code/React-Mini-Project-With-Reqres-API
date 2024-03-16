@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -31,20 +32,20 @@ const Register = () => {
     axios
       .post("https://reqres.in/api/register", payload)
       .then((res) => {
-        setNotif("Login Berhasil");
+        setNotif("Register Success");
         const token = res?.data?.token;
         localStorage.setItem("access_token", token);
         setLoading(false);
         if (token) {
           setTimeout(() => {
             navigate("/users");
-          }, 2000);
+          }, 4000);
         }
       })
       .catch((err) => {
         setLoading(false);
         console.log(err.response);
-        setNotif(err?.response?.data?.error);
+        setNotif("Register Failed");
       });
   };
 
@@ -97,6 +98,29 @@ const Register = () => {
                       data-aos="fade-up"
                       data-aos-duration="1000"
                     >
+                      {notif && (
+                        <div
+                          className={`alert ${
+                            notif === "Login Berhasil"
+                              ? "alert-light"
+                              : "alert-light"
+                          } alert-dismissible fade show`}
+                          role="alert"
+                          style={{
+                            backgroundColor: "white",
+                            color: "#393f81",
+                            fontFamily: "Poppins",
+                          }}
+                        >
+                          {notif}
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                      )}
                       <form>
                         <div className="d-flex align-items-center mb-3 pb-1">
                           <i
